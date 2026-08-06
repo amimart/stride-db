@@ -24,6 +24,26 @@ build-rust: ## Build the Rust sources
 	@printf "$(COLOR_GREEN)$(BOLD)🔨 Building...$(COLOR_RESET)\n"
 	cargo build --all-features
 
+## Test:
+.PHONY: test
+test: test-rust test-doc ## Run all tests
+
+.PHONY: test-rust
+test-rust: ## Run Rust tests
+	@printf "$(COLOR_GREEN)$(BOLD)🧪 Running tests...$(COLOR_RESET)\n"
+	cargo test --workspace --all-features
+
+.PHONY: test-doc
+test-doc: ## Run Rust doc tests
+	@printf "$(COLOR_GREEN)$(BOLD)🧪 Running doc tests...$(COLOR_RESET)\n"
+	cargo test --doc --workspace --all-features
+
+## Coverage
+.PHONY: test-coverage
+test-coverage: ## Run Rust test coverage
+	@printf "$(COLOR_GREEN)$(BOLD)☂️ Running tests with coverage...$(COLOR_RESET)\n"
+	RUSTC_BOOTSTRAP=1 RUSTFLAGS="--cfg coverage_nightly" cargo llvm-cov --workspace --all-features --lcov --output-path lcov.info
+
 ## Help:
 .PHONY: help
 help: ## Show this help
