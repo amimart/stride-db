@@ -1,0 +1,10 @@
+default: true
+
+# Line length is often impractical in prose and tables
+MD013: false
+# Allow inline HTML (useful for badges, <details>, etc.)
+MD033: false
+# Pull request templates intentionally start at section level
+MD041: false
+# Allow duplicate headers, like the changelog
+MD024: false
