@@ -92,6 +92,11 @@ fix-md: ## Auto-fix Markdown
 	@printf "$(COLOR_CYAN)$(BOLD)🔧 Fixing Markdown...$(COLOR_RESET)\n"
 	npx markdownlint-cli2 --fix "**/*.md"
 
+## Clean:
+.PHONY: clean
+clean: ## Clean the build artifacts
+	rm -rf $(TARGET_FOLDER)
+
 ## Help:
 .PHONY: help
 help: ## Show this help
