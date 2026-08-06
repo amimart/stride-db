@@ -15,6 +15,15 @@ endef
 .PHONY: all
 all: help
 
+## Build:
+.PHONY: build
+build: build-rust ## Build rust (i.e. not docker)
+
+.PHONY: build-rust
+build-rust: ## Build the Rust sources
+	@printf "$(COLOR_GREEN)$(BOLD)🔨 Building...$(COLOR_RESET)\n"
+	cargo build --all-features
+
 ## Help:
 .PHONY: help
 help: ## Show this help
