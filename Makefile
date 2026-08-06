@@ -68,6 +68,15 @@ lint-yaml: ## Lint YAML
 	@printf "$(COLOR_CYAN)$(BOLD)📋 Linting YAML...$(COLOR_RESET)\n"
 	yamllint .
 
+## Checks:
+.PHONY: check
+check: lint build test audit ## Run all checks
+
+.PHONY: audit
+audit: ## Run security audit
+	@printf "$(COLOR_YELLOW)$(BOLD)🔒 Running security audit...$(COLOR_RESET)\n"
+	cargo audit
+
 ## Help:
 .PHONY: help
 help: ## Show this help
