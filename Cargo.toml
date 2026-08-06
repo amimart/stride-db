@@ -1,0 +1,24 @@
+[package]
+name = "stride-db"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "MIT"
+description = "An experimental mmap-backed MVCC key-value store using a strided adaptive radix trie"
+
+[lib]
+name = "stride_db"
+path = "src/lib.rs"
+
+[features]
+default = []
+
+[dependencies]
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+all = "warn"
+pedantic = "warn"
