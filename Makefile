@@ -77,6 +77,21 @@ audit: ## Run security audit
 	@printf "$(COLOR_YELLOW)$(BOLD)🔒 Running security audit...$(COLOR_RESET)\n"
 	cargo audit
 
+## Fix:
+.PHONY: fix
+fix: fix-rust fix-md ## Auto-fix all (yaml has no auto-fixer)
+
+.PHONY: fix-rust
+fix-rust: ## Auto-fix Rust formatting and clippy lints
+	@printf "$(COLOR_CYAN)$(BOLD)🔧 Fixing Rust...$(COLOR_RESET)\n"
+	cargo fmt
+	cargo clippy --fix --allow-dirty
+
+.PHONY: fix-md
+fix-md: ## Auto-fix Markdown
+	@printf "$(COLOR_CYAN)$(BOLD)🔧 Fixing Markdown...$(COLOR_RESET)\n"
+	npx markdownlint-cli2 --fix "**/*.md"
+
 ## Help:
 .PHONY: help
 help: ## Show this help
